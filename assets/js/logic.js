@@ -40,5 +40,16 @@ function setTimer() {
     }, 1000); // This will cause the timer to count down per second (1000ms)
 }
 
+//2. Function to take the user from the "Start" screen to the questions screen by hiding the welcome element and making the question elements visible
+
+function fromStartToQuestions() {
+
+    startScreenEl.setAttribute("class", "hide");
+    questionScreenContainerEl.setAttribute("class", "visible");
+    
+}
+
+
+
 
 
