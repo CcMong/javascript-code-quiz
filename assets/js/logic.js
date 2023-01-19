@@ -17,7 +17,7 @@ var quizQuestionIndex = 0;
 
 function setTimer() {
 
-    timeRemaining = 100; 
+    timeRemaining = 100; // Declared in global scope, but set within the function's local scope
 
     // Set the time interval, such that it counts down second by second
 
@@ -39,4 +39,6 @@ function setTimer() {
                 
     }, 1000); // This will cause the timer to count down per second (1000ms)
 }
+
+
 
