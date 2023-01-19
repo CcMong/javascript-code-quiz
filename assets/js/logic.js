@@ -58,6 +58,7 @@ function fromQuestionToEndScreen() {
     endScreenContainerEl.setAttribute("class", "visible");    
 }
 
+
 /*Creating Our Source of Questions to Directly Populate the Quiz
 =================================================================*/
 
@@ -181,6 +182,7 @@ function fillInQuestionsAndOptions() {
     questionsRemaining--
 }    
 
+
 /*Start the Quiz By Clicking the "Start Quiz" Button
 =====================================================*/
 
@@ -193,6 +195,18 @@ startButtonEl.addEventListener("click", function() { // FINE
 })
 
 
+/*Submitting and Registering User Scores
+=========================================*/
+
+// Add event listener to the "Submit" button on the end screen, to save scores and initials to local storage
+
+submitButtonEl.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var initials = document.querySelector("#initials").value; // TRIM
+    var score = document.querySelector("#final-score").textContent;
+
+})
 
 
 
