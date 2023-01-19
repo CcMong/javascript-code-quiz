@@ -89,7 +89,7 @@ function fillInQuestionsAndOptions() {
     
     if (quizQuestionIndex > quizQuestionsCopy.length) return; // We come out of the function when there are no more questions to ask
 
-    var objectOfQuestionAsked = quizQuestionsCopy[quizQuestionIndex]; // It will start from index 0 and take the corresponding question object in the shuffled array, which should be in random order every time the quiz is run
+    var objectOfQuestionAsked = quizQuestionsCopy[quizQuestionIndex]; // It will start from index 0 and take the corresponding question object in the shuffled array one by one, which should be in random order every time the quiz is run
 
     var questionAsked = objectOfQuestionAsked.question; // The question value of the object
     var questionOptions = objectOfQuestionAsked.options; // The array of multiple choice options
@@ -176,16 +176,7 @@ function fillInQuestionsAndOptions() {
         // Now append the created option button element to the options container element
 
         questionChoiceContainerEl.appendChild(questionOption);
-
-        // We want to give the correct answer button the attribute data-correct. And this is the button whose index matches with the answer index
-
-        /*
-
-        if (i === objectOfQuestionAsked.answerIndex) {
-
-            questionOption.setAttribute("data-correct", true);
-
-        } */
+        
     }
 
     quizQuestionIndex++

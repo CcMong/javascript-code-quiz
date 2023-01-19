@@ -87,7 +87,7 @@ li:nth-child(odd) {
   right: 10px;
 }
 
-/* Decided to use this to make sure that only the top 10 high scores are displayed.*/
+/* Decided to use this to make sure that only the top 10 high scores are displayed on highscores.html.*/
 
 #highscores li:nth-child(n+11) {
   display: none;
