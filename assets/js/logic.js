@@ -162,7 +162,7 @@ function fillInQuestionsAndOptions() {
             }
         })
 
-        // Then append the created option button element to the options container element
+        // Now append the created option button element to the options container element
 
         questionChoiceContainerEl.appendChild(questionOption);
 
@@ -180,6 +180,18 @@ function fillInQuestionsAndOptions() {
     quizQuestionIndex++
     questionsRemaining--
 }    
+
+/*Start the Quiz By Clicking the "Start Quiz" Button
+=====================================================*/
+
+// Add an event listener to the "Starr Quiz" button, which will call functions to start the quiz, start the timer, and populate the questions and options.
+
+startButtonEl.addEventListener("click", function() { // FINE
+    setTimer(); // FINE
+    fromStartToQuestions(); // FINE
+    fillInQuestionsAndOptions(); // FINE
+})
+
 
 
 
