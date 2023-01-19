@@ -201,10 +201,51 @@ startButtonEl.addEventListener("click", function() { // FINE
 // Add event listener to the "Submit" button on the end screen, to save scores and initials to local storage
 
 submitButtonEl.addEventListener("click", function(event) {
-    event.preventDefault();
 
-    var initials = document.querySelector("#initials").value; // TRIM
-    var score = document.querySelector("#final-score").textContent;
+    event.preventDefault();
+    
+    // We start by getting any existing saved scores from local storage, if there are any, and capturing them in a variable. Bear in mind that this will be in string form
+
+    var localScores = localStorage.getItem("scores");
+
+    // We also define a variable, which will refer to an array that will contain score items in object form, and where we can add new score items
+        
+    var parsedLocalScores;
+
+    // If no score items exist (either if "Submit" is clicked for the first time, or after local storage has been cleared), we want to set this variable to an empty array
+
+    if (!localScores) {
+
+        parsedLocalScores = [];
+
+    } else {
+            
+        parsedLocalScores = JSON.parse(localScores); // We get scores from local storage and convert them from string form to object form, and stick them in our array
+    }
+
+    // Whenever a user plays the quiz game to the end, they will be prompted for their initials alongside their final score, both of which we can reference
+
+    var initials = document.querySelector("#initials").value; // Reference the user's initials input
+    var score = document.querySelector("#final-score").textContent; // Reference the user's final score
+    
+    // Create an object and put this new high score information into it
+
+    var newHighScore = {
+        initials: initials,
+        score: score
+    }
+
+    // Now, we push this new object into our parsedLocalScores array that contains score items in object form
+
+    parsedLocalScores.push(newHighScore); 
+
+    // Finally, we convert the entire array, now containing all scores information, into string form and set it into local storage
+
+    localStorage.setItem("scores", JSON.stringify(parsedLocalScores));
+
+    // Clicking the button should also take us to the page showing the high scores leaderboard
+    
+    window.location.href = "highscores.html";
 
 })
 
