@@ -81,8 +81,7 @@ arrayShuffle(quizQuestionsCopy); // This output array now becomes our direct sou
 
 function fillInQuestionsAndOptions() { 
 
-    // 
-
+    
     if (quizQuestionIndex > quizQuestionsCopy.length) return; // We come out of the function when there are no more questions to ask
 
     var objectOfQuestionAsked = quizQuestionsCopy[quizQuestionIndex]; // Takes the last question object in the shuffled array, which should be random every time the quiz is run
@@ -90,12 +89,29 @@ function fillInQuestionsAndOptions() {
     var questionAsked = objectOfQuestionAsked.question; // The question value of the object
     var questionOptions = objectOfQuestionAsked.options; // The array of multiple choice options
     var questionAnswerIndex = objectOfQuestionAsked.answerIndex; // The answer index value of the object
+
+    /* Fill in the Quiz Questions
+    ------------------------------*/
     
     questionTitleEl.innerHTML = ""; // Makes the Questions area in the HTML empty
     
     questionTitleEl.textContent = questionAsked; // Fills in the quiz question with the corresponding "question" value of the randomly chosen object
 
+    /* Fill in the Quiz Answer Options
+    -----------------------------------*/
+
     questionChoiceContainerEl.innerHTML = ""; // Makes the choices area in the HTML empty
+
+    // Now to populate the options, we will create button elements, loop through the questionOptions array and put each element to fill in the text content of each of the button elements, and then append them to the div with the #choices id
+
+    for (let i = 0; i < questionOptions.length; i++) {
+
+        var questionOption = document.createElement("button"); // Each multiple choice option is basically a button
+        questionOption.textContent = questionOptions[i]; // We set the text content of each option button to the element in the array
+
+        questionOption.setAttribute("data-index", i); // Assign the index value as the data-index attribute, to be able to identify each button later. I can then use it to compare with the answer, perhaps?
+    
+    }
 
 }
 
