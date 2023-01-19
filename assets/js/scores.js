@@ -29,11 +29,15 @@ var highScoresList = document.querySelector("#highscores"); // Reference the ord
 
 // First get all scores from local storage and convert them to array/object form
 
-var highScores = JSON.parse(localStorage.getItem("scores")); 
+var localScores = localStorage.getItem("scores");
+
+var highScores = JSON.parse(localScores); 
 
 // Then loop through the array of objects. For each array element, ie. a score object:
 
-highScores.forEach((score) => {
+if (localScores !== null) {  // We only want this to run if there is scores information in local storage
+
+    highScores.forEach((score) => {
 
     // Create a <li> element
 
@@ -51,7 +55,8 @@ highScores.forEach((score) => {
 
     highScoresList.appendChild(listItem);
     
-})
+    })
+}
 
 // Now call the function to sort the scores in descending order, after the most recent scores are logged
 
