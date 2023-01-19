@@ -61,7 +61,7 @@ function fromQuestionToEndScreen() {
 /*Creating Our Source of Questions to Directly Populate the Quiz
 =================================================================*/
 
-// Let's define a new array which will be a copy of the main quizQuestions array
+// Let's define a new array which will be a copy of the main quizQuestions array, so we do not mutate the main array
 
 var quizQuestionsCopy = [...quizQuestions]; 
 
@@ -76,6 +76,28 @@ function arrayShuffle(array) {
 }
 
 arrayShuffle(quizQuestionsCopy); // This output array now becomes our direct source of quiz questions
+
+//4. Function to populate the questions screen with questions and multiple choice options
+
+function fillInQuestionsAndOptions() { 
+
+    // 
+
+    if (quizQuestionIndex > quizQuestionsCopy.length) return; // We come out of the function when there are no more questions to ask
+
+    var objectOfQuestionAsked = quizQuestionsCopy[quizQuestionIndex]; // Takes the last question object in the shuffled array, which should be random every time the quiz is run
+
+    var questionAsked = objectOfQuestionAsked.question; // The question value of the object
+    var questionOptions = objectOfQuestionAsked.options; // The array of multiple choice options
+    var questionAnswerIndex = objectOfQuestionAsked.answerIndex; // The answer index value of the object
+    
+    questionTitleEl.innerHTML = ""; // Makes the Questions area in the HTML empty
+    
+    questionTitleEl.textContent = questionAsked; // Fills in the quiz question with the corresponding "question" value of the randomly chosen object
+
+    questionChoiceContainerEl.innerHTML = ""; // Makes the choices area in the HTML empty
+
+}
 
 
 
