@@ -110,6 +110,45 @@ function fillInQuestionsAndOptions() {
         questionOption.textContent = questionOptions[i]; // We set the text content of each option button to the element in the array
 
         questionOption.setAttribute("data-index", i); // Assign the index value as the data-index attribute, to be able to identify each button later. I can then use it to compare with the answer, perhaps?
+
+        // Next, add click event listeners to the individual buttons
+
+        questionOption.addEventListener("click", function(event) {
+
+            var element = event.target;
+            
+            var index;
+            
+            if (element.matches("button")) {
+
+                index = element.getAttribute("data-index"); 
+
+                if (index == questionAnswerIndex) { // Compare the option's data index with the answer index
+
+                    console.log("Correct");
+                    audioCorrect.play();// Sound
+                    // Move to the next question (which it already does)
+                    feedbackEl.setAttribute("class", "visible");// Populate feedback HTML
+                    feedbackEl.textContent = "Correct";
+                    
+
+                } else {
+
+                    console.log("Wrong");
+
+                    audioWrong.play(); // Sound
+
+                    if(timeRemaining > 10) {
+                        timeRemaining -= 10;// Deduct 10 secs from the time
+                    } else {
+                        timeRemaining = 1; // Accounts for the timeRemaining-- condition to zero time out when time is up
+                    }
+                    
+                    feedbackEl.setAttribute("class", "visible");// Populate feedback HTML
+                    feedbackEl.textContent = "Wrong";
+                }
+
+            }
     
     }
 
