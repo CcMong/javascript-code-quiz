@@ -60,3 +60,17 @@ sortList("highscores");
 // To only show 10 scores on the highscore board, I have decided to use CSS to make sure only the top 10 list items are displayed
 
 
+/*Clear the High Score Leaderboard Page
+========================================*/
+
+// Add a click Event Listener for the "Clear High Scores" button
+
+clearButtonEl.addEventListener("click", function() {
+
+    localStorage.clear(); // This will clear local storage
+
+    highScoresList.innerHTML = ""; // This clears the content within the ordered list HTML
+    
+});
+
+
