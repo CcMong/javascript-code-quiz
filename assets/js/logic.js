@@ -49,7 +49,14 @@ function fromStartToQuestions() {
     
 }
 
+//3. Function to take the user from the questions screen to the "End" screen. This can be used BOTH when the timer runs out and when the user has answered all the questions
 
+function fromQuestionToEndScreen() { 
+        
+    questionScreenContainerEl.setAttribute("class", "hide");
+    feedbackEl.setAttribute("class", "hide");
+    endScreenContainerEl.setAttribute("class", "visible");    
+}
 
 
 
