@@ -13,7 +13,7 @@ var timeRemaining;
 var questionsRemaining = 11; // 11 questions in the array, but only 10 of them will be displayed at random.
 var quizQuestionIndex = 0;
 
-//1. Function to set the timer to 100 seconds, and then to start counting down:
+//1. Function to set the timer to 100 seconds, and then to start counting down
 
 function setTimer() {
 
@@ -57,6 +57,27 @@ function fromQuestionToEndScreen() {
     feedbackEl.setAttribute("class", "hide");
     endScreenContainerEl.setAttribute("class", "visible");    
 }
+
+/*Creating Our Source of Questions to Directly Populate the Quiz
+=================================================================*/
+
+// Let's define a new array which will be a copy of the main quizQuestions array
+
+var quizQuestionsCopy = [...quizQuestions]; 
+
+//console.log(quizQuestionsCopy);
+
+// Create a function to shuffle this new array and call it, to ensure that the questions do not appear in the same order whenever the quiz is run 
+
+function arrayShuffle(array) {
+    array.sort( () => 0.5 - Math.random());
+
+    return array;
+}
+
+arrayShuffle(quizQuestionsCopy); // This output array now becomes our direct source of quiz questions
+
+
 
 
 
