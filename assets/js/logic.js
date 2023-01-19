@@ -149,10 +149,37 @@ function fillInQuestionsAndOptions() {
                 }
 
             }
-    
+
+            // If there are questions left, then the click should move to populate the next question and options. Otherwise, move to the end screen
+
+            if(questionsRemaining > 0) {
+
+                fillInQuestionsAndOptions();
+        
+            } else {
+        
+                fromQuestionToEndScreen();
+            }
+        })
+
+        // Then append the created option button element to the options container element
+
+        questionChoiceContainerEl.appendChild(questionOption);
+
+        // We want to give the correct answer button the attribute data-correct. And this is the button whose index matches with the answer index
+
+        /*
+
+        if (i === objectOfQuestionAsked.answerIndex) {
+
+            questionOption.setAttribute("data-correct", true);
+
+        } */
     }
 
-}
+    quizQuestionIndex++
+    questionsRemaining--
+}    
 
 
 
