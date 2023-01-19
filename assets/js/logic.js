@@ -74,6 +74,7 @@ var quizQuestionsCopy = [...quizQuestions];
 // Create a function to shuffle this new array and call it, to ensure that the questions do not appear in the same order whenever the quiz is run 
 
 function arrayShuffle(array) {
+
     array.sort( () => 0.5 - Math.random());
 
     return array;
@@ -88,7 +89,7 @@ function fillInQuestionsAndOptions() {
     
     if (quizQuestionIndex > quizQuestionsCopy.length) return; // We come out of the function when there are no more questions to ask
 
-    var objectOfQuestionAsked = quizQuestionsCopy[quizQuestionIndex]; // Takes the last question object in the shuffled array, which should be random every time the quiz is run
+    var objectOfQuestionAsked = quizQuestionsCopy[quizQuestionIndex]; // It will start from index 0 and take the corresponding question object in the shuffled array, which should be in random order every time the quiz is run
 
     var questionAsked = objectOfQuestionAsked.question; // The question value of the object
     var questionOptions = objectOfQuestionAsked.options; // The array of multiple choice options
@@ -128,18 +129,19 @@ function fillInQuestionsAndOptions() {
                 index = element.getAttribute("data-index"); 
 
                 if (index == questionAnswerIndex) { // Compare the option's data index with the answer index
-
-                    console.log("Correct");
+                    
                     audioCorrect.play();// Sound
-                    // Move to the next question (which it already does)
-                    feedbackEl.setAttribute("class", "visible");// Populate feedback HTML
+                    feedbackEl.setAttribute("class", "visible feedback");// Populate feedback HTML and make visible
                     feedbackEl.textContent = "Correct";
+
+                    setTimeout(function() { // To make the "Correct" feedback disappear after half a second
+                        feedbackEl.setAttribute("class", "hidden");
+                        feedbackEl.innerHTML = "";
+                    }, 500);
                     
 
                 } else {
-
-                    console.log("Wrong");
-
+                    
                     audioWrong.play(); // Sound
 
                     if(timeRemaining > 10) {
@@ -148,8 +150,13 @@ function fillInQuestionsAndOptions() {
                         timeRemaining = 1; // Accounts for the timeRemaining-- condition to zero time out when time is up
                     }
                     
-                    feedbackEl.setAttribute("class", "visible");// Populate feedback HTML
+                    feedbackEl.setAttribute("class", "visible feedback");// Populate feedback HTML and make visible
                     feedbackEl.textContent = "Wrong";
+
+                    setTimeout(function() { // To make the "Wrong" feedback disappear after half a second
+                        feedbackEl.setAttribute("class", "hidden");
+                        feedbackEl.innerHTML = "";
+                    }, 500);
                 }
 
             }
