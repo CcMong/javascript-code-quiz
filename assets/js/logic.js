@@ -8,6 +8,9 @@ var questionChoiceContainerEl = document.querySelector("#choices");
 var feedbackEl = document.querySelector("#feedback");
 var endScreenContainerEl = document.querySelector("#end-screen");
 var finalScoreEl = document.querySelector("#final-score");
+var audioCorrect = new Audio("./assets/sfx/correct.wav");
+var audioWrong = new Audio("./assets/sfx/incorrect.wav");
+var submitButtonEl = document.querySelector("#submit");
 
 var timeRemaining;
 var questionsRemaining = 11; // 11 questions in the array, but only 10 of them will be displayed at random.
